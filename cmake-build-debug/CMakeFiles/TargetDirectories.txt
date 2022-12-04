@@ -1,3 +1,0 @@
-C:/Projects/University/PairSimilarity/cmake-build-debug/CMakeFiles/PairSimilarity.dir
-C:/Projects/University/PairSimilarity/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Projects/University/PairSimilarity/cmake-build-debug/CMakeFiles/rebuild_cache.dir

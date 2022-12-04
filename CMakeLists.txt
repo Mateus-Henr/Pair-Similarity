@@ -3,4 +3,4 @@ project(PairSimilarity C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(PairSimilarity src/main.c src/similarity.c src/similarity.h)
+add_executable(PairSimilarity src/main.c src/similarity.c src/similarity.h src/file.c src/file.h)

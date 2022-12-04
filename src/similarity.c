@@ -2,6 +2,15 @@
 
 #include "similarity.h"
 
+
+/**
+ * Calculates similarity between two vectors using cosines similarity formula.
+ *
+ * @param vectorA pointer to first vector.
+ * @param vectorB pointer to second vector.
+ * @param n vectors' size.
+ * @return value of the calculated similarity.
+ */
 double calculateSimilarity(const int *vectorA, const int *vectorB, int n)
 {
     double sumATimesB = 0;

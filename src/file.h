@@ -2,6 +2,8 @@
 #define PAIRSIMILARITY_FILE_H
 #endif
 
+#include <stdbool.h>
+
 #define FILES_FOLDER = "../files/"
 
-void readFileIntoVector(char *filename, int n, int vector[n]);
+bool readFileIntoVector(int n, char vector[n], char *filename);

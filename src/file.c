@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#include <stddef.h>
 
 #include "file.h"
 
 #define FILES_FOLDER "../files/"
 
 
-void readFileIntoVector(char *filename, int n, char vector[n])
+bool readFileIntoVector(int n, char vector[n], char *filename)
 {
     char filepath[strlen(FILES_FOLDER) + strlen(filename) + 1];
 
@@ -18,11 +17,13 @@ void readFileIntoVector(char *filename, int n, char vector[n])
 
     if (!file)
     {
-        return NULL;
+        return false;
     }
 
     for (int i = 0; i < n; i++)
     {
         vector[n] = fgetc(file);
     }
+
+    return true;
 }

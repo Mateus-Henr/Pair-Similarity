@@ -2,7 +2,6 @@
 
 #include "similarity.h"
 
-
 /**
  * Calculates similarity between two vectors using cosines similarity formula.
  *

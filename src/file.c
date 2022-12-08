@@ -22,7 +22,7 @@ bool readFileIntoArray(int n, char vector[n], char *filename)
 
     for (int i = 0; i < n; i++)
     {
-        vector[n] = fgetc(file);
+        vector[i] = fgetc(file);
     }
 
     return true;

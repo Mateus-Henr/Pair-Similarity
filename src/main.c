@@ -32,7 +32,7 @@ void clearConsole(void);
  */
 int main()
 {
-    printf("Welcome to the similarity calculator!\n");
+    printf("Welcome to the similarity calculator!\n\n\n");
 
     /// ------------------------------- Initializing arrays from files ------------------------------- ///
 
@@ -102,10 +102,10 @@ int main()
     {
         patternMatchesA[i] = getNumberOfPatternMatching(humano,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
+                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
         patternMatchesB[i] = getNumberOfPatternMatching(chimp,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
+                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
 
         printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
         printf("Chimp pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]);
@@ -119,7 +119,7 @@ int main()
 
     double similarity = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
 
-    printf("Similarity: %f\n", similarity);
+    printf("Similarity between human and chimp: %lf\n", similarity);
 
     /// ---------------------------------------------------------------------------------------------- ///
 

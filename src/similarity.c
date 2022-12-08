@@ -54,6 +54,8 @@ void initializeCartesianProductMatrix(int qtyOfCombinations, int size, char matr
     // One by one print all sequences
     for (int i = 0; i < qtyOfCombinations; i++)
     {
+        matrix[i][size - 1] = '\0';
+
         // Print current combination
         for (int j = 0; j < size - 1; j++)
         {
@@ -82,8 +84,6 @@ void initializeCartesianProductMatrix(int qtyOfCombinations, int size, char matr
         {
             array[j] = 0;
         }
-
-        matrix[i][size - 1] = '\0';
     }
 }
 

@@ -24,7 +24,7 @@ double calculateSimilarity(const int *vectorA, const int *vectorB, int n)
     {
         sumATimesB += vectorA[i - 1] * vectorB[i - 1];
         sumASquared += pow(vectorA[i - 1], 2);
-        sumBSquared += pow(vectorA[i - 1], 2);
+        sumBSquared += pow(vectorB[i - 1], 2);
     }
 
     return sumATimesB / (sqrt(sumASquared) * sqrt(sumBSquared));

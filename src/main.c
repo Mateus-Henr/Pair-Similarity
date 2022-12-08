@@ -234,12 +234,15 @@ int main()
                 strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
             }
 
+           
+
             patternMatchesA[i] = getNumberOfPatternMatching(humano,
                                                             pattern[i],
                                                             getNumberOfPatternMatchingShiftAndAlgorithm);
             patternMatchesB[i] = getNumberOfPatternMatching(chimp,
                                                             pattern[i],
                                                             getNumberOfPatternMatchingShiftAndAlgorithm);
+                                              
         }
 
     

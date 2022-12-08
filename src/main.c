@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include "patternMatching.h"
 #include "similarity.h"
 
 #include "file.h"
@@ -31,6 +34,8 @@ int main()
 {
     printf("Welcome to the similarity calculator!\n");
 
+    /// ------------------------------- Initializing arrays from files ------------------------------- ///
+
     char humano[HUMANO_SIZE];
 
     if (!readFileIntoArray(HUMANO_SIZE, humano, HUMANO_FILENAME))
@@ -55,22 +60,69 @@ int main()
         flushIn();
     }
 
-    int stringSize = 2;
-    int qtyCombinations = getVectorSizeForCartesianProduct(stringSize);
+    /// ---------------------------------------------------------------------------------------------- ///
 
-    char matrix[qtyCombinations][stringSize];
 
-    initializeCartesianProductMatrix(qtyCombinations, stringSize, matrix);
 
-    for (int i = 0; i < qtyCombinations; i++)
+    /// --------------------------- Initializing cartesian product matrix --------------------------- ///
+
+    int numberOfCharacters = 2;
+    int qtyOfCombinations = getVectorSizeForCartesianProduct(numberOfCharacters);
+
+    char matrix[qtyOfCombinations][numberOfCharacters + 1];
+
+    initializeCartesianProductMatrix(qtyOfCombinations, numberOfCharacters + 1, matrix);
+
+    /// ---------------------------------------------------------------------------------------------- ///
+
+
+    /// ------------------------------- Get random pattern from matrix ------------------------------- ///
+
+    int numberOfElementsToChoose = 4;
+
+    char pattern[numberOfElementsToChoose][numberOfCharacters + 1];
+
+    srand(time(NULL));
+
+    for (int i = 0; i < numberOfElementsToChoose; i++)
     {
-        for (int j = 0; j < stringSize; j++)
-        {
-            printf("%c", matrix[i][j]);
-        }
-
-        printf("\n");
+        strcpy(pattern[i], matrix[rand() % (qtyOfCombinations + 1)]);
     }
+
+    /// ---------------------------------------------------------------------------------------------- ///
+
+
+
+    /// ------------------------------ Searching for patterns on strings ----------------------------- ///
+
+    int patternMatchesA[numberOfElementsToChoose];
+    int patternMatchesB[numberOfElementsToChoose];
+
+    for (int i = 0; i < numberOfElementsToChoose; i++)
+    {
+        patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                        pattern[i],
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
+        patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                        pattern[i],
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
+
+        printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+        printf("Chimp pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]);
+    }
+
+    /// ---------------------------------------------------------------------------------------------- ///
+
+
+
+    /// ------------------------------ Calculating similarity between vectors ------------------------- ///
+
+    double similarity = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+
+    printf("Similarity: %f\n", similarity);
+
+    /// ---------------------------------------------------------------------------------------------- ///
+
 
     return 0;
 }

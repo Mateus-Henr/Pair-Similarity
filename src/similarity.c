@@ -1,6 +1,5 @@
 #include <math.h>
 #include <string.h>
-#include <stdio.h>
 
 #include "similarity.h"
 
@@ -44,10 +43,10 @@ void initializeCartesianProductMatrix(int qtyOfCombinations, int size, char matr
 {
     // Store all possible strings of length k in array that can be formed from a set of n character using DNA array
     int n = (int) strlen(DNA);
-    int array[size];
+    int array[size - 1];
 
     // Initialize array with first k character of DNA
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size - 1; i++)
     {
         array[i] = 0;
     }
@@ -56,13 +55,13 @@ void initializeCartesianProductMatrix(int qtyOfCombinations, int size, char matr
     for (int i = 0; i < qtyOfCombinations; i++)
     {
         // Print current combination
-        for (int j = 0; j < size; j++)
+        for (int j = 0; j < size - 1; j++)
         {
             matrix[i][j] = DNA[array[j]];
         }
 
         // Find the rightmost character which is not DNA.length - 1 and increment its value
-        int next = size - 1;
+        int next = size - 2;
 
         while (next >= 0 && (array[next] + 1 >= n))
         {
@@ -79,10 +78,12 @@ void initializeCartesianProductMatrix(int qtyOfCombinations, int size, char matr
         array[next]++;
 
         // Fill all the characters to the right of this character with the first character of DNA
-        for (int j = next + 1; j < size; j++)
+        for (int j = next + 1; j < size - 1; j++)
         {
             array[j] = 0;
         }
+
+        matrix[i][size - 1] = '\0';
     }
 }
 

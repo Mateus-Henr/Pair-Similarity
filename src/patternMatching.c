@@ -168,3 +168,17 @@ int getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm(char *text, char *patter
 
     return numberOfMatches;
 }
+
+
+/**
+ * Gets number of pattern matching using passed in algorithm.
+ *
+ * @param text pointer to text.
+ * @param pattern pointer to pattern.
+ * @param algorithm algorithm to use.
+ * @return number of pattern matching.
+ */
+int getNumberOfPatternMatching(char *text, char *pattern, int (*algorithm)(char *, char *))
+{
+    return (*algorithm)(text, pattern);
+}

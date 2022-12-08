@@ -7,3 +7,5 @@ int getNumberOfPatternMatchingBoyerMooreAlgorithm(char *text, char *pattern);
 int getNumberOfPatternMatchingShiftAndAlgorithm(char *text, char *pattern);
 
 int getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm(char *text, char *pattern);
+
+int getNumberOfPatternMatching(char *text, char *pattern, int (*algorithm)(char *, char *));

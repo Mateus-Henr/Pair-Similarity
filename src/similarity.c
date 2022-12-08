@@ -40,31 +40,31 @@ double calculateSimilarity(const int *vectorA, const int *vectorB, int n)
  * @param matrix matrix to be filled.
  * @see https://www.geeksforgeeks.org/print-all-combinations-of-given-length/
  */
-void setCartesianProductMatrix(int qtyOfCombinations, int k, char matrix[qtyOfCombinations][k])
+void initializeCartesianProductMatrix(int qtyOfCombinations, int size, char matrix[qtyOfCombinations][size])
 {
-    // Store all possible strings of length k in vector that can be formed from a set of n character using DNA vector
+    // Store all possible strings of length k in array that can be formed from a set of n character using DNA array
     int n = (int) strlen(DNA);
-    int vector[k];
+    int array[size];
 
-    // Initialize vector with first k character of DNA
-    for (int i = 0; i < k; i++)
+    // Initialize array with first k character of DNA
+    for (int i = 0; i < size; i++)
     {
-        vector[i] = 0;
+        array[i] = 0;
     }
 
     // One by one print all sequences
     for (int i = 0; i < qtyOfCombinations; i++)
     {
         // Print current combination
-        for (int j = 0; j < k; j++)
+        for (int j = 0; j < size; j++)
         {
-            matrix[i][j] = DNA[vector[j]];
+            matrix[i][j] = DNA[array[j]];
         }
 
         // Find the rightmost character which is not DNA.length - 1 and increment its value
-        int next = k - 1;
+        int next = size - 1;
 
-        while (next >= 0 && (vector[next] + 1 >= n))
+        while (next >= 0 && (array[next] + 1 >= n))
         {
             next--;
         }
@@ -76,12 +76,12 @@ void setCartesianProductMatrix(int qtyOfCombinations, int k, char matrix[qtyOfCo
         }
 
         // If there is such a character, then increment it
-        vector[next]++;
+        array[next]++;
 
         // Fill all the characters to the right of this character with the first character of DNA
-        for (int j = next + 1; j < k; j++)
+        for (int j = next + 1; j < size; j++)
         {
-            vector[j] = 0;
+            array[j] = 0;
         }
     }
 }

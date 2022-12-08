@@ -6,7 +6,7 @@
 #define FILES_FOLDER "../files/"
 
 
-bool readFileIntoVector(int n, char vector[n], char *filename)
+bool readFileIntoArray(int n, char vector[n], char *filename)
 {
     char filepath[strlen(FILES_FOLDER) + strlen(filename) + 1];
 

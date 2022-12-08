@@ -4,6 +4,4 @@
 
 #include <stdbool.h>
 
-#define FILES_FOLDER = "../files/"
-
-bool readFileIntoVector(int n, char vector[n], char *filename);
+bool readFileIntoArray(int n, char vector[n], char *filename);

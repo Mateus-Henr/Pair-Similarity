@@ -33,7 +33,7 @@ int main()
 
     char humano[HUMANO_SIZE];
 
-    if (!readFileIntoVector(HUMANO_SIZE, humano, HUMANO_FILENAME))
+    if (!readFileIntoArray(HUMANO_SIZE, humano, HUMANO_FILENAME))
     {
         printf(ERROR_FILE, HUMANO_FILENAME);
         flushIn();
@@ -41,7 +41,7 @@ int main()
 
     char chimp[CHIMP_SIZE];
 
-    if (!readFileIntoVector(CHIMP_SIZE, chimp, CHIMP_FILENAME))
+    if (!readFileIntoArray(CHIMP_SIZE, chimp, CHIMP_FILENAME))
     {
         printf(ERROR_FILE, CHIMP_FILENAME);
         flushIn();
@@ -49,7 +49,7 @@ int main()
 
     char cachorro[CACHORRO_SIZE];
 
-    if (!readFileIntoVector(CACHORRO_SIZE, cachorro, CACHORRO_FILENAME))
+    if (!readFileIntoArray(CACHORRO_SIZE, cachorro, CACHORRO_FILENAME))
     {
         printf(ERROR_FILE, CACHORRO_FILENAME);
         flushIn();
@@ -60,7 +60,7 @@ int main()
 
     char matrix[qtyCombinations][stringSize];
 
-    setCartesianProductMatrix(qtyCombinations, stringSize, matrix);
+    initializeCartesianProductMatrix(qtyCombinations, stringSize, matrix);
 
     for (int i = 0; i < qtyCombinations; i++)
     {
@@ -68,6 +68,7 @@ int main()
         {
             printf("%c", matrix[i][j]);
         }
+
         printf("\n");
     }
 

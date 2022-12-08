@@ -110,10 +110,10 @@ int main()
     {
         patternMatchesA[i] = getNumberOfPatternMatching(humano,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
         patternMatchesB[i] = getNumberOfPatternMatching(chimp,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
 
         /* 
         printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
@@ -141,10 +141,10 @@ int main()
     {
         patternMatchesA[i] = getNumberOfPatternMatching(humano,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
         patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
 
         /*
         printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
@@ -175,10 +175,10 @@ int main()
     {
         patternMatchesA[i] = getNumberOfPatternMatching(chimp,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
         patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
                                                         pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                        getNumberOfPatternMatchingBoyerMooreAlgorithm);
 
         /* 
         printf("Chimp pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
@@ -230,10 +230,10 @@ int main()
 
             patternMatchesA[i] = getNumberOfPatternMatching(humano,
                                                             pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
             patternMatchesB[i] = getNumberOfPatternMatching(chimp,
                                                             pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
         }
     
         results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
@@ -259,10 +259,10 @@ int main()
 
             patternMatchesA[i] = getNumberOfPatternMatching(humano,
                                                             pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
             patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
                                                             pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
         }
     
         results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
@@ -288,10 +288,10 @@ int main()
 
             patternMatchesA[i] = getNumberOfPatternMatching(chimp,
                                                             pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
             patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
                                                             pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
         }
     
         results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);

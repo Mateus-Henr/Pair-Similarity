@@ -211,6 +211,8 @@ int main()
         return 0;
     }
 
+    clock_t begin = clock();
+
     /// ------------------------------ |Human and Chimp| ----------------------------------------------- ///
 
     double results[SIMULATION_SIZE];
@@ -300,6 +302,11 @@ int main()
     printf("Average similarity between chimp and dog: %lf\n\n", average /= SIMULATION_SIZE);
 
     /// ---------------------------------------------------------------------------------------------- ///
+
+    clock_t end = clock();
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+    printf("Time spent: %lf seconds\n", time_spent);
 
     return 0;
 }

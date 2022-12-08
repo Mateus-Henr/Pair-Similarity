@@ -14,6 +14,7 @@
 #define HUMANO_SIZE 4320
 #define CHIMP_SIZE 1682
 #define CACHORRO_SIZE 820
+#define SIMULATION_SIZE 1000
 
 #define ERROR_FILE "ERROR: Couldn't read file '%s'"
 
@@ -145,10 +146,11 @@ int main()
                                                         pattern[i],
                                                         getNumberOfPatternMatchingShiftAndAlgorithm);
 
-        /* 
+        /*
         printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
         printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
         */
+        
     }
 
     /// ---------------------------------------------------------------------------------------------- ///
@@ -193,8 +195,111 @@ int main()
     similarity = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
 
     printf("Similarity between chimp and dog: %lf\n", similarity);
-    
 
+    /// ---------------------------------------------------------------------------------------------- ///
+
+
+
+    /// ----------------------------------- Simulation ----------------------------------------------- ///
+
+    printf("\nDo you want to run the simulation? (y/n)\n");
+    char answer = getchar(); flushIn();
+
+    if (answer != 'y')
+    {
+        printf("Ok... Bye! :D\n");
+        return 0;
+    }
+
+    /// ------------------------------ |Human and Chimp| ----------------------------------------------- ///
+
+    double results[SIMULATION_SIZE];
+    double average = 0;
+
+    for (int i = 0; i < SIMULATION_SIZE; i++)
+    {
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+            }
+
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+        }
+    
+        results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+        //printf("Similarity between human and chimp: %lf\n", results[i]);
+    }
+
+    for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];
+    
+    printf("Average similarity between human and chimp: %lf\n", average /= SIMULATION_SIZE);
+
+    /// ------------------------------ |Human and Dog| ----------------------------------------------- ///
+
+    average = 0;
+
+    for (int i = 0; i < SIMULATION_SIZE; i++)
+    {
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+            }
+
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+        }
+    
+        results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+        //printf("Similarity between human and dog: %lf\n", results[i]);
+    }
+
+    for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];
+
+    printf("Average similarity between human and dog: %lf\n", average /= SIMULATION_SIZE);
+
+    /// ------------------------------ |Chimp and Dog| ----------------------------------------------- ///
+
+    average = 0;
+
+    for (int i = 0; i < SIMULATION_SIZE; i++)
+    {
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+            }
+
+            patternMatchesA[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+        }
+    
+        results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+        //printf("Similarity between chimp and dog: %lf\n", results[i]);
+    }
+
+    for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];
+
+    printf("Average similarity between chimp and dog: %lf\n\n", average /= SIMULATION_SIZE);
+
+    /// ---------------------------------------------------------------------------------------------- ///
 
     return 0;
 }

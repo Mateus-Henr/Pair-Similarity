@@ -1,10 +1,15 @@
+/*
+    * main.c
+    *
+    * Using Shift-And algorithm to find the number of pattern matching.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
 #include "patternMatching.h"
 #include "similarity.h"
-
 #include "file.h"
 
 #define HUMANO_FILENAME "humano.txt"
@@ -33,7 +38,8 @@ void clearConsole(void);
  */
 int main()
 {
-    printf("Welcome to the similarity calculator!\n\n");
+    clearConsole();
+    printf("Welcome to the similarity calculator, using Shift-And algorithm!\n\n");
 
     /// ------------------------------- Initializing arrays from files ------------------------------- ///
 
@@ -235,9 +241,12 @@ int main()
                                                             pattern[i],
                                                             getNumberOfPatternMatchingShiftAndAlgorithm);
         }
+
     
         results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
         //printf("Similarity between human and chimp: %lf\n", results[i]);
+        
+        
     }
 
     for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];
@@ -250,6 +259,7 @@ int main()
 
     for (int i = 0; i < SIMULATION_SIZE; i++)
     {
+
         for (int i = 0; i < numberOfElementsToChoose; i++)
         {
             for (int i = 0; i < numberOfElementsToChoose; i++)
@@ -307,6 +317,7 @@ int main()
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
+    printf("Simulation size: %d\n", SIMULATION_SIZE);
     printf("Time spent: %lf seconds\n\n", time_spent);
 
     return 0;

@@ -1,3 +1,10 @@
+/*
+    * main2.c
+    *
+    * Using Boyer-Moore algorithm to find the number of pattern matching.
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -33,7 +40,7 @@ void clearConsole(void);
  */
 int main()
 {
-    printf("Welcome to the similarity calculator!\n\n");
+    printf("Welcome to the similarity calculator, using Boyer-Moore algorithm!\n\n");
 
     /// ------------------------------- Initializing arrays from files ------------------------------- ///
 
@@ -307,6 +314,7 @@ int main()
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
+    printf("Simulation size: %d\n", SIMULATION_SIZE);
     printf("Time spent: %lf seconds\n\n", time_spent);
 
     return 0;

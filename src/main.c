@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "similarity.h"
 
 #include "file.h"
 
@@ -8,7 +9,7 @@
 #define CACHORRO_FILENAME "cachorro.txt"
 
 #define HUMANO_SIZE 4320
-#define CHIMP_SIZE 1628
+#define CHIMP_SIZE 1682
 #define CACHORRO_SIZE 820
 
 #define ERROR_FILE "ERROR: Couldn't read file '%s'"
@@ -54,6 +55,21 @@ int main()
         flushIn();
     }
 
+    int stringSize = 2;
+    int qtyCombinations = getVectorSizeForCartesianProduct(stringSize);
+
+    char matrix[qtyCombinations][stringSize];
+
+    setCartesianProductMatrix(qtyCombinations, stringSize, matrix);
+
+    for (int i = 0; i < qtyCombinations; i++)
+    {
+        for (int j = 0; j < stringSize; j++)
+        {
+            printf("%c", matrix[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }

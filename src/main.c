@@ -28,7 +28,7 @@ void clearConsole(void);
  */
 int main()
 {
-    printf("HWelcome to the similarity calculator!\n");
+    printf("Welcome to the similarity calculator!\n");
 
     char humano[HUMANO_SIZE];
 

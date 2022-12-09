@@ -3,7 +3,7 @@
 
 #include "file.h"
 
-#define FILES_FOLDER "files/"
+#define FILES_FOLDER "../files/"
 
 
 bool readFileIntoArray(int n, char vector[n], char *filename)

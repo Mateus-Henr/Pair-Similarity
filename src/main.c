@@ -39,7 +39,19 @@ void clearConsole(void);
 int main()
 {
     clearConsole();
-    printf("Welcome to the similarity calculator, using Shift-And algorithm!\n\n");
+    printf("Welcome to the similarity calculator!\n\n"
+    "Witch algorithm would you like to use?\n"
+    "[1] Shift-And algorithm\n"
+    "[2] Knuth-Morris-Pratt algorithm\n"
+    "[3] Boyer-Moore algorithm\n\n");
+
+    char algorithm = getchar(); flushIn();
+
+    while (algorithm != '1' && algorithm != '2' && algorithm != '3')
+    {
+        printf("Invalid answer.\n");
+        algorithm = getchar(); flushIn();
+    }
 
     /// ------------------------------- Initializing arrays from files ------------------------------- ///
 
@@ -112,19 +124,58 @@ int main()
     int patternMatchesA[numberOfElementsToChoose];
     int patternMatchesB[numberOfElementsToChoose];
 
-    for (int i = 0; i < numberOfElementsToChoose; i++)
+    switch (algorithm)
     {
-        patternMatchesA[i] = getNumberOfPatternMatching(humano,
-                                                        pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
-        patternMatchesB[i] = getNumberOfPatternMatching(chimp,
-                                                        pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+    case '1':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
 
-        /* 
-        printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
-        printf("Chimp pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
-        */
+            /* 
+            printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Chimp pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    case '2':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+
+            /* 
+            printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Chimp pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    case '3':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
+
+            /* 
+            printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Chimp pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    default:
+        break;
     }
 
     /// ---------------------------------------------------------------------------------------------- ///
@@ -143,20 +194,59 @@ int main()
 
     /// ------------------------------ Searching for patterns on strings |Human and Dog| ------------------------------ ///
 
-    for (int i = 0; i < numberOfElementsToChoose; i++)
+    switch (algorithm)
     {
-        patternMatchesA[i] = getNumberOfPatternMatching(humano,
-                                                        pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
-        patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
-                                                        pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+    case '1':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
 
-        /*
-        printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
-        printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
-        */
-        
+            /*
+            printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    case '2':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+
+            /*
+            printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    case '3':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
+
+            /*
+            printf("Human pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+            
+        }
+        break;    
+    default:
+        break;
     }
 
     /// ---------------------------------------------------------------------------------------------- ///
@@ -175,21 +265,58 @@ int main()
 
     /// ------------------------------ Searching for patterns on strings |Chimp and Dog| ------------------------------ ///
 
-
-
-    for (int i = 0; i < numberOfElementsToChoose; i++)
+    switch (algorithm)
     {
-        patternMatchesA[i] = getNumberOfPatternMatching(chimp,
-                                                        pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
-        patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
-                                                        pattern[i],
-                                                        getNumberOfPatternMatchingShiftAndAlgorithm);
+    case '1':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
 
-        /* 
-        printf("Chimp pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
-        printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
-        */
+            /* 
+            printf("Chimp pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    case '2':
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+
+            /* 
+            printf("Chimp pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    case '3' */:
+        for (int i = 0; i < numberOfElementsToChoose; i++)
+        {
+            patternMatchesA[i] = getNumberOfPatternMatching(chimp,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
+            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                            pattern[i],
+                                                            getNumberOfPatternMatchingBoyerMooreAlgorithm);
+
+            /* 
+            printf("Chimp pattern '%s' matches: %d\n", pattern[i], patternMatchesA[i]);
+            printf("Dog pattern '%s' matches: %d\n\n", pattern[i], patternMatchesB[i]); 
+            */
+        }
+        break;
+    default:
+        break;
     }
 
     /// ---------------------------------------------------------------------------------------------- ///
@@ -225,31 +352,76 @@ int main()
 
     average = 0;
 
-    for (int i = 0; i < SIMULATION_SIZE; i++)
+    switch (algorithm)
     {
-        for (int i = 0; i < numberOfElementsToChoose; i++)
+    case '1':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
         {
             for (int i = 0; i < numberOfElementsToChoose; i++)
             {
-                strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
+
+                patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingShiftAndAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingShiftAndAlgorithm);
             }
 
-           
-
-            patternMatchesA[i] = getNumberOfPatternMatching(humano,
-                                                            pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
-            patternMatchesB[i] = getNumberOfPatternMatching(chimp,
-                                                            pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
-                                              
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between human and chimp: %lf\n", results[i]);
         }
+        break;
+    case '2':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
 
-    
-        results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
-        //printf("Similarity between human and chimp: %lf\n", results[i]);
+                patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+            }
         
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between human and chimp: %lf\n", results[i]);
+        }
+        break;
+    case '3':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
+
+                patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingBoyerMooreAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(chimp,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingBoyerMooreAlgorithm);
+            }
         
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between human and chimp: %lf\n", results[i]);
+        }
+        break;    
+    default:
+        break;
     }
 
     for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];
@@ -260,26 +432,77 @@ int main()
 
     average = 0;
 
-    for (int i = 0; i < SIMULATION_SIZE; i++)
+    switch (algorithm)
     {
+    case '1':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
+        {
 
-        for (int i = 0; i < numberOfElementsToChoose; i++)
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
+
+                patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingShiftAndAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingShiftAndAlgorithm);
+            }
+        
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between human and dog: %lf\n", results[i]);
+        }
+        break;
+    case '2':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
         {
             for (int i = 0; i < numberOfElementsToChoose; i++)
             {
-                strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
-            }
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
 
-            patternMatchesA[i] = getNumberOfPatternMatching(humano,
-                                                            pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
-            patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
-                                                            pattern[i],
-                                                            getNumberOfPatternMatchingShiftAndAlgorithm);
+                patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+            }
+        
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between human and dog: %lf\n", results[i]);
         }
-    
-        results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
-        //printf("Similarity between human and dog: %lf\n", results[i]);
+        break;
+    case '3':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
+
+                patternMatchesA[i] = getNumberOfPatternMatching(humano,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingBoyerMooreAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingBoyerMooreAlgorithm);
+            }
+        
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between human and dog: %lf\n", results[i]);
+        }
+        break;    
+    default:
+        break;
     }
 
     for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];
@@ -290,7 +513,10 @@ int main()
 
     average = 0;
 
-    for (int i = 0; i < SIMULATION_SIZE; i++)
+    switch (algorithm)
+    {
+    case '1':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
     {
         for (int i = 0; i < numberOfElementsToChoose; i++)
         {
@@ -309,6 +535,54 @@ int main()
     
         results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
         //printf("Similarity between chimp and dog: %lf\n", results[i]);
+    }
+        break;
+    case '2':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
+
+                patternMatchesA[i] = getNumberOfPatternMatching(chimp,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingKnuthMorrisPrattAlgorithm);
+            }
+        
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between chimp and dog: %lf\n", results[i]);
+        }
+        break;
+    case '3':
+        for (int i = 0; i < SIMULATION_SIZE; i++)
+        {
+            for (int i = 0; i < numberOfElementsToChoose; i++)
+            {
+                for (int i = 0; i < numberOfElementsToChoose; i++)
+                {
+                    strcpy(pattern[i], matrix[rand() % (qtyOfCombinations)]);
+                }
+
+                patternMatchesA[i] = getNumberOfPatternMatching(chimp,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingBoyerMooreAlgorithm);
+                patternMatchesB[i] = getNumberOfPatternMatching(cachorro,
+                                                                pattern[i],
+                                                                getNumberOfPatternMatchingBoyerMooreAlgorithm);
+            }
+        
+            results[i] = calculateSimilarity(patternMatchesA, patternMatchesB, numberOfElementsToChoose);
+            //printf("Similarity between chimp and dog: %lf\n", results[i]);
+        }
+        break;    
+    default:
+        break;
     }
 
     for (int i = 0; i < SIMULATION_SIZE; i++) average += results[i];

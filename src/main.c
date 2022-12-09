@@ -1,9 +1,3 @@
-/*
-    * main.c
-    *
-    * Using Shift-And algorithm to find the number of pattern matching.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -19,7 +13,8 @@
 #define HUMANO_SIZE 4320
 #define CHIMP_SIZE 1682
 #define CACHORRO_SIZE 820
-#define SIMULATION_SIZE 1000
+#define SIMULATION_SIZE 10000
+#define NUMBER_CHARACTERS 3
 
 #define ERROR_FILE "ERROR: Couldn't read file '%s'"
 #define INVALID_ALGORITHM "ERROR: Invalid algorithm"
@@ -96,7 +91,7 @@ int main()
 
     /// --------------------------- Initializing cartesian product matrix --------------------------- ///
 
-    int numberOfCharacters = 2;
+    int numberOfCharacters = NUMBER_CHARACTERS;
 
     printf("Number of characters: %d \n", numberOfCharacters);
 
@@ -115,7 +110,9 @@ int main()
     srand(time(NULL));
     printf("Quantity of combinations: %d\n", qtyOfCombinations);
 
-    int numberOfElementsToChoose = rand() % (qtyOfCombinations - 1) + 1;
+    int numberOfElementsToChoose = 20;
+
+    //int numberOfElementsToChoose = rand() % (qtyOfCombinations - 1) + 1;
     printf("Number of elements to choose: %d\n\n", numberOfElementsToChoose);
 
     char pattern[numberOfElementsToChoose][numberOfCharacters + 1];

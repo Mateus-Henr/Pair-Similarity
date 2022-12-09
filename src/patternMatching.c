@@ -21,7 +21,7 @@ int max(int a, int b)
  * @param text pointer to text.
  * @param pattern pointer to pattern.
  * @return number of pattern matching.
- * @see https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/
+ * @see https://tungmphung.com/shift-and-algorithm-for-exact-pattern-matching/
  */
 int getNumberOfPatternMatchingBoyerMooreAlgorithm(char *text, char *pattern)
 {
